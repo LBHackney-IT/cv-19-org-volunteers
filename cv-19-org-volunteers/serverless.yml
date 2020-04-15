@@ -56,7 +56,7 @@ functions:
 
     # you can add packaging information here
     package:
-      artifact: bin/release/netcoreapp2.1/hello.zip
+      artifact: bin/release/netcoreapp2.1/cv-19-org-volunteers.zip
     events:
       - http:
           path: users/create
