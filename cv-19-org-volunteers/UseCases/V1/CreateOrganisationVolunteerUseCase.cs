@@ -1,20 +1,32 @@
+using System;
 using CV19OrgVolunteers.Gateways.V1;
+using CV19OrgVolunteers.Models.V1;
+using CV19OrgVolunteers.Validators.V1;
 
 namespace CV19OrgVolunteers.UseCases.V1
 {
     public class CreateOrganisationVolunteerUseCase : ICreateOrganisationVolunteerUseCase
     {
         private readonly IOrganisationVolunteerGateway _organisationVolunteerGatewayGateway;
+        private readonly IOrganisationVolunteerRequestValidator _validator;
 
-        public CreateOrganisationVolunteerUseCase(IOrganisationVolunteerGateway organisationVolunteerGatewayGateway)
+        public CreateOrganisationVolunteerUseCase(IOrganisationVolunteerGateway organisationVolunteerGatewayGateway, IOrganisationVolunteerRequestValidator validator)
         {
             _organisationVolunteerGatewayGateway = organisationVolunteerGatewayGateway;
+            _validator = validator;
         }
 
-        public void InsertOrganisationVolunteerRecord(string data)
+        public int InsertOrganisationVolunteerRecord(OrganisationsNeedingVolunteers data)
         {
-            _organisationVolunteerGatewayGateway.Insert(data);
-            // implement something
+            var validationResponse = _validator.Validate(data);
+            if (validationResponse.Count > 0)
+            {
+                throw new Exception();
+            }
+            else
+            {
+               return _organisationVolunteerGatewayGateway.Insert(data);
+            }
         }
     }
 }

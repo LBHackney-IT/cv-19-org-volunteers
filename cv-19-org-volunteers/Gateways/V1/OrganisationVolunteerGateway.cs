@@ -1,3 +1,5 @@
+using CV19OrgVolunteers.Models.V1;
+
 namespace CV19OrgVolunteers.Gateways.V1
 {
     public class OrganisationVolunteerGateway : IOrganisationVolunteerGateway
@@ -8,7 +10,7 @@ namespace CV19OrgVolunteers.Gateways.V1
             _connectionString = connectionString;
         }
 
-        public int Insert(string data)
+        public int Insert(OrganisationsNeedingVolunteers data)
         {
             return 1;
         }
