@@ -52,7 +52,7 @@ package:
 
 functions:
   createOrganisationVolunteerRequest-v1:
-    handler: CsharpHandlers::CV19OrgVolunteersV1.Handler::CreateOrganisationVolunteer
+    handler: CsharpHandlers::CV19OrgVolunteers.Handler::CreateOrganisationVolunteer
 
     # you can add packaging information here
     package:
