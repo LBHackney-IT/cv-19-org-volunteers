@@ -17,7 +17,7 @@ namespace CV19OrgVolunteers.Gateways.V1
         {
             _dbContext.OrganisationsNeedingVolunteers.Add(data);
             int response = _dbContext.SaveChanges();
-            return response;
+            return data.Id;
         }
     }
 }

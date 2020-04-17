@@ -2,6 +2,8 @@ using System;
 using CV19OrgVolunteers.Gateways.V1;
 using CV19OrgVolunteers.Models.V1;
 using CV19OrgVolunteers.Validators.V1;
+using Amazon.Lambda.Core;
+using Newtonsoft.Json;
 
 namespace CV19OrgVolunteers.UseCases.V1
 {
@@ -18,6 +20,7 @@ namespace CV19OrgVolunteers.UseCases.V1
 
         public int InsertOrganisationVolunteerRecord(OrganisationsNeedingVolunteers data)
         {
+            Console.WriteLine("CreateOrganisationVolunteer: " + JsonConvert.SerializeObject(data));
             var validationResponse = _validator.Validate(data);
             if (validationResponse.Count > 0)
             {

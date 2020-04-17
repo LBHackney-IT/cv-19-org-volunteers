@@ -59,7 +59,7 @@ functions:
       artifact: bin/release/netcoreapp2.1/cv-19-org-volunteers.zip
     events:
       - http:
-          path: users/create
+          path: organisation-volunteers
           method: post
           cors:
             origin: '*'
