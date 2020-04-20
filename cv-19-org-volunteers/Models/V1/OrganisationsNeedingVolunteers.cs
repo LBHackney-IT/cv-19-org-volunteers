@@ -76,5 +76,6 @@ namespace CV19OrgVolunteers.Models.V1
         public bool ConsentToShare { get; set; }
         public bool? VolunteerNewsletter { get; set; }
         public bool PrivacyPolicyCheck { get; set; }
+        public DateTime? DateTimeRecorded { get; set; }
     }
 }
