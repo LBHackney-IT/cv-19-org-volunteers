@@ -1,39 +1,57 @@
 using Amazon.Lambda.Core;
+using CV19OrgVolunteers.Data.V1;
 using System;
+using Amazon.Lambda.APIGatewayEvents;
+using CV19OrgVolunteers.Gateways.V1;
+using CV19OrgVolunteers.Models.V1;
+using CV19OrgVolunteers.UseCases.V1;
+using CV19OrgVolunteers.Validators.V1;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 [assembly:LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
 
-namespace CV19OrgVolunteersV1
+namespace CV19OrgVolunteers
 {
     public class Handler
     {
-       public Response CreateOrganisationVolunteer(Request request)
+       public Response CreateOrganisationVolunteer(APIGatewayProxyRequest request, ILambdaContext context)
        {
-           return new Response("Go Serverless v1.0! Your function executed successfully!", request);
+           LambdaLogger.Log("CreateOrganisationVolunteer: " + JsonConvert.SerializeObject(request));
+           var connectionString = Environment.GetEnvironmentVariable("CV_19_DB_CONNECTION");
+           var createRequestGateway = new OrganisationVolunteerGateway(connectionString);
+           var createRequestObject = new CreateOrganisationVolunteerUseCase(createRequestGateway, new OrganisationVolunteerRequestValidator());
+           try
+           {
+               var response = createRequestObject.InsertOrganisationVolunteerRecord(JsonConvert.DeserializeObject<OrganisationsNeedingVolunteers>(request.Body));
+               LambdaLogger.Log(("Create Success: " + response.ToString()));
+               var resp = new Response();
+               resp.statusCode = "200";
+               resp.isBase64Encoded = true;
+               resp.body = response.ToString();
+               return resp;
+           }
+           catch(Exception e)
+           {
+               LambdaLogger.Log("Error: " + e.Message);
+               var resp = new Response();
+               resp.statusCode = "500";
+               resp.isBase64Encoded = true;
+               resp.body = "Error processing request: " + JsonConvert.SerializeObject(request)+ ". Error Details: " + e.Message + e.StackTrace;
+               return resp;
+           }
        }
     }
 
     public class Response
     {
-      public string Message {get; set;}
-      public Request Request {get; set;}
+        public bool isBase64Encoded { get; set; }
+        public string statusCode { get; set; }
+        public string headers { get; set; }
+        public string body { get; set; }
 
-      public Response(string message, Request request){
-        Message = message;
-        Request = request;
-      }
-    }
-
-    public class Request
-    {
-      public string Key1 {get; set;}
-      public string Key2 {get; set;}
-      public string Key3 {get; set;}
-
-      public Request(string key1, string key2, string key3){
-        Key1 = key1;
-        Key2 = key2;
-        Key3 = key3;
-      }
+        public Response()
+        {
+        }
     }
 }

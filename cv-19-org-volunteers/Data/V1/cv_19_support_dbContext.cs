@@ -204,6 +204,8 @@ namespace CV19OrgVolunteers.Data.V1
                     .IsRequired()
                     .HasColumnName("wards")
                     .HasColumnType("character varying");
+                
+                entity.Property(e => e.DateTimeRecorded).HasColumnName("date_time_recorded");
             });
 
             OnModelCreatingPartial(modelBuilder);

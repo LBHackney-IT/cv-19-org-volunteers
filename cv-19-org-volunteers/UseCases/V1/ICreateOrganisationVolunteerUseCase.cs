@@ -1,7 +1,8 @@
+using CV19OrgVolunteers.Models.V1;
 namespace CV19OrgVolunteers.UseCases.V1
 {
     public interface ICreateOrganisationVolunteerUseCase
     {
-        void InsertOrganisationVolunteerRecord(string data);
+        int InsertOrganisationVolunteerRecord(OrganisationsNeedingVolunteers data);
     }
 }
