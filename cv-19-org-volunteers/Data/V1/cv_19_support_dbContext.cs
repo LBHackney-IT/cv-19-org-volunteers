@@ -199,6 +199,8 @@ namespace CV19OrgVolunteers.Data.V1
                 entity.Property(e => e.VolunteeringWednesdayPm).HasColumnName("volunteering_wednesday_pm");
 
                 entity.Property(e => e.VolunteersRequired).HasColumnName("volunteers_required");
+                
+                entity.Property(e => e.VolunteerVehicleNotRequired).HasColumnName("volunteer_driving_na");
 
                 entity.Property(e => e.Wards)
                     .IsRequired()

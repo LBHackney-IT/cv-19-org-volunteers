@@ -67,6 +67,7 @@ namespace CV19OrgVolunteers.Models.V1
         public bool? VolunteerHasLicenceAndVan { get; set; }
         public bool? VolunteerHasMotorcycle { get; set; }
         public bool? VolunteerHasBike { get; set; }
+        public bool? VolunteerVehicleNotRequired { get; set; }
         public bool? DbsStandard { get; set; }
         public bool? DbsEnhanced { get; set; }
         public bool? DbsNotRequired { get; set; }
