@@ -38,26 +38,14 @@ namespace CV19OrgVolunteers.Data.V1
 
                 entity.Property(e => e.Id).HasColumnName("id");
                 
-                entity.Property(e => e.OrganisationName)
-                    .IsRequired()
-                    .HasColumnName("organisation_name")
-                    .HasColumnType("character varying");
-                
-                entity.Property(e => e.EmailAddress)
-                    .IsRequired()
-                    .HasColumnName("email_address")
-                    .HasColumnType("character varying");
-                
-                entity.Property(e => e.IsCurrentlyVolunteering).HasColumnName("is_currently_volunteering");
-                
-                entity.Property(e => e.Wards)
-                    .IsRequired()
-                    .HasColumnName("wards")
-                    .HasColumnType("character varying");
-
                 entity.Property(e => e.Beneficiaries)
                     .IsRequired()
                     .HasColumnName("beneficiaries")
+                    .HasColumnType("character varying");
+                
+                entity.Property(e => e.BeneficiariesOther)
+                    .IsRequired()
+                    .HasColumnName("beneficiaries_other")
                     .HasColumnType("character varying");
 
                 entity.Property(e => e.ConsentToShare).HasColumnName("consent_to_share");
@@ -133,6 +121,11 @@ namespace CV19OrgVolunteers.Data.V1
                 entity.Property(e => e.VolunteerLanguages)
                     .HasColumnName("volunteer_languages")
                     .HasColumnType("character varying");
+                
+                entity.Property(e => e.VolunteerLanguagesOther)
+                    .HasColumnName("volunteer_languages_other")
+                    .HasColumnType("character varying");
+
 
                 entity.Property(e => e.VolunteerNeededOneDay).HasColumnName("volunteer_needed_one_day");
 
@@ -215,7 +208,9 @@ namespace CV19OrgVolunteers.Data.V1
 
                 entity.Property(e => e.VolunteeringWednesdayPm).HasColumnName("volunteering_wednesday_pm");
 
-                entity.Property(e => e.VolunteersRequired).HasColumnName("volunteers_required");
+                entity.Property(e => e.VolunteersRequired)
+                    .HasColumnName("volunteers_required")
+                    .HasColumnType("character varying");
                 
                 entity.Property(e => e.VolunteerVehicleNotRequired).HasColumnName("volunteer_driving_na");
 

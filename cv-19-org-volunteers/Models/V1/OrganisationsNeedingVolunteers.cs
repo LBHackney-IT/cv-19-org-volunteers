@@ -11,6 +11,7 @@ namespace CV19OrgVolunteers.Models.V1
         public bool? IsCurrentlyVolunteering { get; set; }
         public string Wards { get; set; }
         public string Beneficiaries { get; set; }
+        public string BeneficiariesOther { get; set; }
         public bool HasVolunteeringPolicy { get; set; }
         public bool? HasInsurance { get; set; }
         public bool? VolunteerExpenseCover { get; set; }
@@ -24,7 +25,7 @@ namespace CV19OrgVolunteers.Models.V1
         public bool? NeedsSkillTranslating { get; set; }
         public string NeedsSkillOther { get; set; }
         public string VolunteerSupportActivities { get; set; }
-        public bool VolunteersRequired { get; set; }
+        public string VolunteersRequired { get; set; }
         public bool? VolunteeringMondayAm { get; set; }
         public bool? VolunteeringMondayPm { get; set; }
         public bool? VolunteeringMondayEvening { get; set; }
@@ -53,6 +54,7 @@ namespace CV19OrgVolunteers.Models.V1
         public bool? VolunteerInPerson { get; set; }
         public bool? VolunteerRemotely { get; set; }
         public string VolunteerLanguages { get; set; }
+        public string VolunteerLanguagesOther { get; set; }
         public bool? VolunteerTrainedFoodSafety { get; set; }
         public bool? VolunteerTrainedChildcare { get; set; }
         public bool? VolunteerTrainedMidas { get; set; }
