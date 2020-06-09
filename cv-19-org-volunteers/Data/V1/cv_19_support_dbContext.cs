@@ -37,6 +37,23 @@ namespace CV19OrgVolunteers.Data.V1
                 entity.ToTable("organisations_needing_volunteers");
 
                 entity.Property(e => e.Id).HasColumnName("id");
+                
+                entity.Property(e => e.OrganisationName)
+                    .IsRequired()
+                    .HasColumnName("organisation_name")
+                    .HasColumnType("character varying");
+                
+                entity.Property(e => e.EmailAddress)
+                    .IsRequired()
+                    .HasColumnName("email_address")
+                    .HasColumnType("character varying");
+                
+                entity.Property(e => e.IsCurrentlyVolunteering).HasColumnName("is_currently_volunteering");
+                
+                entity.Property(e => e.Wards)
+                    .IsRequired()
+                    .HasColumnName("wards")
+                    .HasColumnType("character varying");
 
                 entity.Property(e => e.Beneficiaries)
                     .IsRequired()
