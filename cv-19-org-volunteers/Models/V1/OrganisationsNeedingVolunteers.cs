@@ -13,7 +13,7 @@ namespace CV19OrgVolunteers.Models.V1
         public string Beneficiaries { get; set; }
         public string BeneficiariesOther { get; set; }
         public bool HasVolunteeringPolicy { get; set; }
-        public bool? HasInsurance { get; set; }
+        public string HasInsurance { get; set; }
         public bool? VolunteerExpenseCover { get; set; }
         public bool? NeedsSkillCooking { get; set; }
         public bool? NeedsSkillLogistics { get; set; }

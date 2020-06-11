@@ -67,7 +67,9 @@ namespace CV19OrgVolunteers.Data.V1
                     .HasColumnName("email_address")
                     .HasColumnType("character varying");
 
-                entity.Property(e => e.HasInsurance).HasColumnName("has_insurance");
+                entity.Property(e => e.HasInsurance)
+                    .HasColumnName("has_insurance")
+                    .HasColumnType("character varying");
 
                 entity.Property(e => e.HasVolunteeringPolicy).HasColumnName("has_volunteering_policy");
 
