@@ -23,6 +23,7 @@ namespace CV19OrgVolunteers.Models.V1
         public bool? NeedsSkillShopping { get; set; }
         public bool? NeedsSkillForms { get; set; }
         public bool? NeedsSkillTranslating { get; set; }
+        public bool? NeedsSkillCommunications { get; set; }
         public string NeedsSkillOther { get; set; }
         public string VolunteerSupportActivities { get; set; }
         public string VolunteersRequired { get; set; }

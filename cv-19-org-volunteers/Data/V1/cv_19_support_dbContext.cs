@@ -92,6 +92,7 @@ namespace CV19OrgVolunteers.Data.V1
                 entity.Property(e => e.NeedsSkillShopping).HasColumnName("needs_skill_shopping");
 
                 entity.Property(e => e.NeedsSkillTranslating).HasColumnName("needs_skill_translating");
+                entity.Property(e => e.NeedsSkillCommunications).HasColumnName("needs_skill_communications");
 
                 entity.Property(e => e.OrganisationName)
                     .IsRequired()
